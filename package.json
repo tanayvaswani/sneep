@@ -11,6 +11,7 @@
     "format:fix": "prettier --write \"**/*.{ts,tsx,json}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,json}\"",
     "studio": "pnpx prisma studio",
+    "db:push": "pnpx prisma db push",
     "db:seed": "pnpx prisma db seed",
     "db:reset": "pnpx prisma migrate reset"
   },
