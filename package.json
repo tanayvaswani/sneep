@@ -10,9 +10,9 @@
     "lint:fix": "eslint --max-warnings 0 --config .eslintrc . --fix",
     "format:fix": "prettier --write \"**/*.{ts,tsx,json}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,json}\"",
-    "studio": "pnpx prisma studio",
+    "db:studio": "pnpx prisma studio",
     "db:push": "pnpx prisma db push",
-    "db:seed": "pnpx prisma db seed",
+    "db:seed": "ts-node scripts/seed.ts",
     "db:reset": "pnpx prisma migrate reset"
   },
   "dependencies": {
@@ -28,7 +28,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^20.12.7",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^7.6.0",
@@ -40,6 +40,7 @@
     "prettier": "^3.2.5",
     "prisma": "^5.12.1",
     "tailwindcss": "^3.3.0",
-    "typescript": "^5"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
   }
 }
