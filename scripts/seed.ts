@@ -7,16 +7,17 @@ async function main() {
   try {
     await db.user.create({
       data: {
-        username: 'tanay',
+        username: 'tanayvaswani',
         password: 'tanay',
-        email: 'test@tanayvaswani.com',
+        email: 'new@tanayvaswani.com',
         firstName: 'tanay',
         lastName: 'vaswani',
 
-        post: {
+        posts: {
           create: [
             {
               code: 'console.log()',
+              published: true,
             },
           ],
         },

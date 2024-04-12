@@ -16,7 +16,7 @@ model User {
   firstName    String
   lastName    String
 
-  post        Post[]
+  posts       Post[]
 }
 
 model Post {

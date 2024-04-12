@@ -11,6 +11,9 @@ export async function GET(
       where: {
         id: Number(params.userId),
       },
+      include: {
+        posts: true,
+      },
     });
 
     if (!user) {
