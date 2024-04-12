@@ -1,11 +1,25 @@
+import prisma from '@/lib/prisma';
 
+const getPosts = async () => {
+  const posts = await prisma.post.findMany();
 
-const HomePage = () => {
-    return ( 
-        <div>
-            Home page with all posts
+  return posts;
+};
+
+const HomePage = async () => {
+  const posts = await getPosts();
+
+  return (
+    <div>
+      {posts?.map((post, index) => (
+        <div key={index}>
+          <div>{post?.code}</div>
+          <div>{post?.description}</div>
+          <div>{post?.authorId}</div>
         </div>
-     );
-}
- 
+      ))}
+    </div>
+  );
+};
+
 export default HomePage;
