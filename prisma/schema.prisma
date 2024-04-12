@@ -32,7 +32,7 @@ model Post {
   upvotes     Int         @default(0)
   downvotes   Int         @default(0)
 
-  comment     String?
+  comments     String[]    @default([])
 
   author      User        @relation(fields: [authorId], references: [id])
   authorId    Int
