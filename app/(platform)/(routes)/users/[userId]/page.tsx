@@ -6,6 +6,9 @@ const getUser = async (userId: number) => {
     where: {
       id: userId,
     },
+    include: {
+      posts: true,
+    },
   });
 
   return user;
