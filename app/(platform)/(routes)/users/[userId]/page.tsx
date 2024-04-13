@@ -39,7 +39,7 @@ const UserProfilePage = async ({ params }: { params: { userId: string } }) => {
       </div>
 
       {/* TODO: Add users posts */}
-      <div></div>
+      <div>{}</div>
     </div>
   );
 };
