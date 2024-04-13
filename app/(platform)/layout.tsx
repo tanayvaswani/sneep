@@ -4,7 +4,7 @@ const PlatformLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="h-full">
       <Navbar />
-      <div className="pt-24 md:mx-auto md:max-w-screen-xl">{children}</div>
+      <div className="pt-16 md:mx-auto md:max-w-screen-xl">{children}</div>
       {/* <Footer /> */}
     </div>
   );
