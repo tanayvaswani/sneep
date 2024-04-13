@@ -1,3 +1,4 @@
+import NewPost from '@/components/new-post';
 import prisma from '@/lib/prisma';
 
 const getPosts = async () => {
@@ -18,6 +19,8 @@ const HomePage = async () => {
           <div>{post?.authorId}</div>
         </div>
       ))}
+
+      <NewPost />
     </div>
   );
 };
