@@ -31,8 +31,8 @@ import { useState } from 'react';
 
 const formSchema = z.object({
   description: z.string().min(1).max(200),
-  code: z.string().min(10, {
-    message: 'Instructions required atleast 10 characters!',
+  code: z.string().min(3, {
+    message: 'Instructions required atleast 3 characters!',
   }),
 });
 
