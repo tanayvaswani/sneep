@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 
-import { saltAndHashPassword } from './lib/utils';
+import { getUserFromDb, saltAndHashPassword } from './lib/utils';
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -13,9 +13,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       authorize: async (credentials) => {
         let user = null;
 
-        const pwHash = saltAndHashPassword(credentials.password);
+        const pwHash = saltAndHashPassword(credentials?.password);
 
-        user = await getUserFromDb(credentials.email, pwHash);
+        user = await getUserFromDb(credentials?.email, pwHash);
 
         if (!user) {
           throw new Error('User not found.');
