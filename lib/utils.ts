@@ -22,6 +22,13 @@ export async function getUserFromDb(email: string, hashedPassword: string) {
   });
 
   if (user) {
-    const isPasswordRight = await bcrypt.compare()
+    const isPasswordRight = await bcrypt.compare(
+      user?.password,
+      hashedPassword,
+    );
+
+    if (isPasswordRight) {
+      return user;
+    }
   }
 }
