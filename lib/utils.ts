@@ -27,6 +27,8 @@ export async function getUserFromDb(email: string, hashedPassword: string) {
       hashedPassword,
     );
 
+    // TODO: CHANGE SCHEMA
+
     if (isPasswordRight) {
       return user;
     }
