@@ -1,98 +1,29 @@
 generator client {
   provider = "prisma-client-js"
 }
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
 model User {
-  id              String        @id @default(cuid())
-  username        String
-  email           String        @unique
-  password        String
-
-  accounts        Account[]
-  sessions        Session[]
-  Authenticator   Authenticator[]
-
-  firstName        String
-  lastName        String
-  posts           Post[]
-
-  createdAt       DateTime    @default(now())
-  updatedAt       DateTime    @updatedAt
+  id          Int        @id @default(autoincrement())
+  username    String
+  email       String     @unique
+  password    String
+  firstName    String
+  lastName    String
+  posts       Post[]
 }
-
 model Post {
-  id              Int         @id @default(autoincrement())
-  createdAt       DateTime    @default(now())
-  updatedAt       DateTime    @updatedAt
-
-  description     String?
-  code            String
-
-  published       Boolean     @default(false)
-
-  upvotes         Int         @default(0)
-  downvotes       Int         @default(0)
-
-  comments        String[]    @default([])
-
-  author          User        @relation(fields: [authorId], references: [id])
-  authorId        String
-}
-
-model Account {
-  userId            String
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String?
-  access_token      String?
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String?
-  session_state     String?
-
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@id([provider, providerAccountId])
-}
-
-model Session {
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model VerificationToken {
-  identifier String
-  token      String
-  expires    DateTime
-
-  @@id([identifier, token])
-}
-
-model Authenticator {
-  id                   String  @id @default(cuid())
-  credentialID         String  @unique
-  userId               String
-  providerAccountId    String
-  credentialPublicKey  String
-  counter              Int
-  credentialDeviceType String
-  credentialBackedUp   Boolean
-  transports           String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id          Int         @id @default(autoincrement())
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  description String?
+  code        String
+  published   Boolean     @default(false)
+  upvotes     Int         @default(0)
+  downvotes   Int         @default(0)
+  comments     String[]    @default([])
+  author      User        @relation(fields: [authorId], references: [id])
+  authorId    Int
 }
