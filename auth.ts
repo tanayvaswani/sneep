@@ -12,15 +12,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Credentials({
       credentials: {
-        email: {},
-        password: {},
+        email: { label: 'email', type: 'text', placeholder: 'email' },
+        password: { label: 'password', type: 'password' },
       },
       authorize: async (credentials) => {
         let user = null;
 
-        const pwHash = saltAndHashPassword(credentials?.password);
+        const pwHash = await saltAndHashPassword(
+          credentials?.password as string,
+        );
 
-        user = await getUserFromDb(credentials?.email, pwHash);
+        user = await getUserFromDb(credentials?.email as string, pwHash);
 
         if (!user) {
           throw new Error('User not found.');
